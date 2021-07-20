@@ -1,0 +1,9 @@
+FROM dvaldano/ubuntu18-tf1.14-arm64
+COPY bitfusion-ubuntu_18.04.aarch64.tgz /home/ngd/
+RUN mkdir /tmp/bitfusion-aarch64 && \
+    cd /tmp/bitfusion-aarch64 && \
+    tar -zxvf /home/ngd/bitfusion-ubuntu_18.04.aarch64.tgz && \
+    sed -i 's/ open-vm-tools//g' install && \
+    sudo ./install -s -m client && \
+    rm -rf /tmp/bitfusion-aarch64
+WORKDIR /home/ngd
