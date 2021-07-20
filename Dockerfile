@@ -38,7 +38,7 @@ RUN useradd ngd -m --password '' -G sudo -s /bin/bash
 #
 # Install CUDA 9.0 packages
 #
-COPY --chown=ngd:ngd ./packages /home/ngd/cuda-l4t
+COPY --chown=ngd:ngd ./packages/*.deb ./packages/*.sh /home/ngd/cuda-l4t
 USER ngd
 WORKDIR /home/ngd/cuda-l4t
 RUN sh ./cuda-l4t.sh cuda-repo-l4t-9-0-local_9.0.252-1_arm64.deb 9.0 9-0
@@ -74,3 +74,4 @@ RUN wget --quiet --show-progress --progress=bar:force:noscroll --no-check-certif
 
 # Copy some basic tests into container
 COPY ./test /home/ngd/
+WORKDIR /home/ngd/cuda-l4t

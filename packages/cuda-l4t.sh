@@ -18,8 +18,6 @@ sudo dpkg --force-all -i ~/cuda-l4t/$1
 sleep 5
 sudo apt-key add /var/cuda-repo-$3-local/*.pub
 sleep 2
-sudo sed -i.bak 's/\(^deb.*main restricted\)\s*$/\1 universe multiverse/g' /etc/apt/sources.list
-sudo sed -i.bak 's/\(^deb.*main restricted universe\)\s*$/\1 multiverse/g' /etc/apt/sources.list
 
 sudo apt-get -y update
 sudo apt-get -y --allow-downgrades install cuda-toolkit-$3 libgomp1 libfreeimage-dev libopenmpi-dev openmpi-bin
