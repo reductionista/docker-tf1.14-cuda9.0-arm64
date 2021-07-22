@@ -6,4 +6,12 @@ RUN mkdir /tmp/bitfusion-aarch64 && \
     sed -i 's/ open-vm-tools//g' install && \
     sudo ./install -s -m client && \
     rm -rf /tmp/bitfusion-aarch64
+#
+# This doesn't actually work, unlss there is a bitfusion server running with a
+#   matching version string.  But it gets further than with the default 0-42823817
+#
+RUN cd /opt/bitfusion && \
+    sudo mv 0-42823817 2.5.1-42823817 && \
+    sudo rm 428238170170f30a45049fcffa0c7c65eb6a4d2f && \
+    sudo ln -s 2.5.1-42823817 428238170170f30a45049fcffa0c7c65eb6a4d2f
 WORKDIR /home/ngd
